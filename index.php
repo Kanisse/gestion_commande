@@ -53,7 +53,7 @@ if($resultat)
 
 }
 else {
-	echo "ERROR";
+	echo "Veuillez réessayer!";
 }
 
 /*to be seen in GitHub*/
