@@ -56,7 +56,7 @@ else {
 	echo "Veuillez réessayer!";
 }
 
-/*to be seen in GitHub*/
+/*to be seen in GitHub */
 
 }
 
