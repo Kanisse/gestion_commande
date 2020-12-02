@@ -4,10 +4,10 @@
 	<title>La page Connexion</title>
 	</head>
 
-<body style="backgroud-color:red;">
+<body>
 
 <div>
-<h1>Gestion Commerciale :</h1>
+<h1>Gestion Commerciale 1 :</h1>
 
 
 <form action="index.php" method="post">
