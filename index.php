@@ -4,7 +4,7 @@
 	<title>La page Connexion</title>
 	</head>
 
-<body>
+<body style="backgroud-color:red;">
 
 <div>
 <h1>Gestion Commerciale :</h1>
