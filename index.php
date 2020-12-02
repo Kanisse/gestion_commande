@@ -56,7 +56,7 @@ else {
 	echo "ERROR";
 }
 
-
+/*to be seen in GitHub*/
 
 }
 
