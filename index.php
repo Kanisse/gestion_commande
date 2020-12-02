@@ -20,7 +20,7 @@
 
 	$sql="SELECT * FROM produits";
 	$resultat=$connexion->query($sql);
-	echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Catégorie</th><th></th></tr>";
+	echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Catégorie</th></tr>";
 	while($ligne=$resultat->fetch_assoc()){
 		echo "<tr>".
 		"<td>".$ligne['Id_Produit'] ."</td>". 
