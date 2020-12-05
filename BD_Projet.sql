@@ -58,7 +58,7 @@ CREATE TABLE `clients` (
 --
 
 CREATE TABLE `produits` (
-  `IdProduit` int(20) NOT NULL,
+  `IdProduit` int(20) NOT NULL AUTO_INCREMENT,
   `NomProduit` varchar(200) NOT NULL,
   `Prix` float NOT NULL,
   `QteStock` int(10) NOT NULL,
