@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>La list client</title>
+	</head>
+
+<body>
+
+<div>
+<h1>Gestion Commerciale 1 :</h1>
+
+
+<form action="index.php" method="post">
+	<input type="submit" name="OK" value="Ajouter un client">
+</form>	
+<center>
+
+	<?php
+	$connexion=mysqli_connect("localhost","root","","gestionc");
+
+	$sql="SELECT * FROM client";
+	$resultat=$connexion->query($sql);
+	echo "<table border ='1'><tr><th>IDclient</th><th>Nom client </th><th>prenom</th><th>sex </th><th>adresse</th><th>telephone</th><th>email</th><th>iduser</th></tr>";
+	while($ligne=$resultat->fetch_assoc()){
+		echo "<tr>".
+		"<td>".$ligne['IdClient'] ."</td>". 
+		"<td>".$ligne['Nom'] ."</td>". 
+		"<td>".$ligne['Prenom']. "</td>". 
+		"<td>".$ligne['Sexe']."</td> ".
+        "<td>".$ligne['Adresse']."</td> ".
+        "<td>".$ligne['Telephone']."</td> ".
+        "<td>".$ligne['Email']."</td> ".
+        "<td>".$ligne['IdUser']."</td> ".
+		"<td>  <a href='index.php?id=".$ligne['IdClient']."'>Supprimer</a>   </td>".
+			"</tr>"; 
+	}
+	echo "</table>";
+
+	?>
+
+</center>
+	</div>
+</body>
+</html>
+
+<?php
+
+if(isset($_GET['id'])){
+
+$id = $_GET['id'];
+$sql="DELETE FROM clients WHERE IdClient=$id";
+$resultat=$connexion->query($sql);
+
+if($resultat)
+{
+	header('location: index.php');
+
+}
+else {
+	echo "Veuillez réessayer!";
+}
+
+/*to be seen in GitHub */
+
+}
+
+
+if(isset($_POST['OK'])){
+?>
+<form action="index.php" method="post">
+	Nom : <input type="text" name="Nom"><br>
+	Prenom : <input type="text" name="Prenom"><br>
+	sexe : <input type="text" name="Sexe"><br>
+    adresse : <input type="text" name="Adresse"><br>
+    telephone : <input type="text" name="Telephone"><br>
+    email : <input type="text" name="Email"><br>
+    iduser : <input type="number" name="IdUser"><br>
+    
+    
+	<input type="submit" name="Ajouter" value="Ajouter">
+</form>
+
+<?php
+ 
+}
+ if(isset($_POST['Ajouter'])){
+
+ 	$sql="INSERT INTO produits (IdClient,Nom,Prenom,Sexe,Adresse,Telephone,Email,IdUser) 
+ 	VALUES ('".$_POST['IdClient']."','".$_POST['Nom']."','".$_POST['Prenom']."','".$_POST['Sexe']."','".$_POST['Adresse']."','".$_POST['Telephone']."','".$_POST['Email']."','".$_POST['IdUser']."')";
+
+	$resultat=$connexion->query($sql);
+	if($resultat)
+	{
+		header('location: index.php');
+	}else {echo "ERROR";}
+
+ }  
+
+
+
+
+
+?>
