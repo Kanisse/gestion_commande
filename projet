@@ -27,10 +27,10 @@
 		"<td>".$ligne['Nom'] ."</td>". 
 		"<td>".$ligne['Prenom']. "</td>". 
 		"<td>".$ligne['Sexe']."</td> ".
-        "<td>".$ligne['Adresse']."</td> ".
-        "<td>".$ligne['Telephone']."</td> ".
-        "<td>".$ligne['Email']."</td> ".
-        "<td>".$ligne['IdUser']."</td> ".
+                "<td>".$ligne['Adresse']."</td> ".
+                "<td>".$ligne['Telephone']."</td> ".
+                "<td>".$ligne['Email']."</td> ".
+                "<td>".$ligne['IdUser']."</td> ".
 		"<td>  <a href='index.php?id=".$ligne['IdClient']."'>Supprimer</a>   </td>".
 			"</tr>"; 
 	}
