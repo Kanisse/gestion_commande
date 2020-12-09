@@ -20,7 +20,7 @@
 
 	$sql="SELECT * FROM client";
 	$resultat=$connexion->query($sql);
-	echo "<table border ='1'><tr><th>IDclient</th><th>Nom client </th><th>prenom</th><th>sex </th><th>adresse</th><th>telephone</th><th>email</th><th>iduser</th></tr>";
+	echo "<table border ='1'><tr><th>IDclient</th><th>Nom client </th><th>prenom</th><th>sexe</th><th>adresse</th><th>telephone</th><th>email</th><th>iduser</th></tr>";
 	while($ligne=$resultat->fetch_assoc()){
 		echo "<tr>".
 		"<td>".$ligne['IdClient'] ."</td>". 
