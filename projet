@@ -85,7 +85,7 @@ if(isset($_POST['OK'])){
 }
  if(isset($_POST['Ajouter'])){
 
- 	$sql="INSERT INTO produits (IdClient,Nom,Prenom,Sexe,Adresse,Telephone,Email,IdUser) 
+ 	$sql="INSERT INTO Client (IdClient,Nom,Prenom,Sexe,Adresse,Telephone,Email,IdUser) 
  	VALUES ('".$_POST['IdClient']."','".$_POST['Nom']."','".$_POST['Prenom']."','".$_POST['Sexe']."','".$_POST['Adresse']."','".$_POST['Telephone']."','".$_POST['Email']."','".$_POST['IdUser']."')";
 
 	$resultat=$connexion->query($sql);
