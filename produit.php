@@ -19,7 +19,7 @@
 </form>
 
 <?php
-$connexion=mysqli_connect("localhost","root","","projet");
+include 'connexion.php';
 if (isset($_POST['search1'])){
 	?>
 	<center>
