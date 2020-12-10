@@ -32,18 +32,18 @@ if (isset($_POST['search1'])){
 
 	}
 	else{
-		$sql="SELECT * FROM produits WHERE IdProduit=$id";
+		$sql="SELECT * FROM produits INNER JOIN categories ON produits.IdCategorie = categories.IdCategorie WHERE IdProduit=$id";
 
 	$resultat=$connexion->query($sql);
 	
-	echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Quantité Stock</th><th>ID Catégorie</th></tr>";
+	echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Quantité Stock</th><th>Catégorie</th></tr>";
 	while($ligne=$resultat->fetch_assoc()){
 		echo "<tr>".
 		"<td>".$ligne['IdProduit'] ."</td>". 
 		"<td>".$ligne['NomProduit'] ."</td>". 
 		"<td>".$ligne['Prix']."</td>". 
 		"<td>".$ligne['QteStock']. "</td>". 
-		"<td>".$ligne['IdCategorie']."</td> ".
+		"<td>".$ligne['NomCategorie']."</td> ".
 			"</tr>"; 
 	}
 	echo "</table>";
@@ -67,18 +67,18 @@ else if(isset($_POST['search2'])){
 
 	}
 	else{
-		$sql="SELECT * FROM produits WHERE NomProduit LIKE '%".$name."%'";
+		$sql="SELECT * FROM produits INNER JOIN categories ON produits.IdCategorie = categories.IdCategorie WHERE NomProduit LIKE '%".$name."%'";
 
 	$resultat=$connexion->query($sql);
 	
-	echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Quantité Stock</th><th>ID Catégorie</th></tr>";
+	echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Quantité Stock</th><th>Catégorie</th></tr>";
 	while($ligne=$resultat->fetch_assoc()){
 		echo "<tr>".
 		"<td>".$ligne['IdProduit'] ."</td>". 
 		"<td>".$ligne['NomProduit'] ."</td>". 
 		"<td>".$ligne['Prix']."</td>". 
 		"<td>".$ligne['QteStock']. "</td>". 
-		"<td>".$ligne['IdCategorie']."</td> ".
+		"<td>".$ligne['NomCategorie']."</td> ".
 			"</tr>"; 
 	}
 	echo "</table>";
@@ -91,16 +91,16 @@ else if(isset($_POST['search2'])){
 	</center>
 	<?php
 	if(isset($_POST['back'])){
-		$sql="SELECT * FROM produits";
+		$sql="SELECT * FROM produits INNER JOIN categories ON produits.IdCategorie = categories.IdCategorie";
 		$resultat=$connexion->query($sql);
-		echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Quantité Stock</th><th>ID Catégorie</th></tr>";
+		echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Quantité Stock</th><th>Catégorie</th></tr>";
 		while($ligne=$resultat->fetch_assoc()){
 			echo "<tr>".
 			"<td>".$ligne['IdProduit'] ."</td>". 
 			"<td>".$ligne['NomProduit'] ."</td>". 
 			"<td>".$ligne['Prix']."</td>". 
 			"<td>".$ligne['QteStock']. "</td>". 
-			"<td>".$ligne['IdCategorie']."</td> ".
+			"<td>".$ligne['NomCategorie']."</td> ".
 			"</tr>"; 
 		}
 		echo "</table>";
@@ -114,16 +114,16 @@ else{
 	<?php
 	
 
-	$sql="SELECT * FROM produits";
+	$sql="SELECT * FROM produits INNER JOIN categories ON produits.IdCategorie = categories.IdCategorie";
 	$resultat=$connexion->query($sql);
-	echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Quantité Stock</th><th>ID Catégorie</th></tr>";
+	echo "<table border ='1'><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Quantité Stock</th><th>Catégorie</th></tr>";
 	while($ligne=$resultat->fetch_assoc()){
 		echo "<tr>".
 		"<td>".$ligne['IdProduit']."</td>". 
 		"<td>".$ligne['NomProduit']."</td>". 
 		"<td>".$ligne['Prix']."</td>". 
 		"<td>".$ligne['QteStock']."</td>". 
-		"<td>".$ligne['IdCategorie']."</td> ".
+		"<td>".$ligne['NomCategorie']."</td> ".
 		"</tr>";
 	}
 	echo "</table>";
@@ -140,12 +140,22 @@ else{
 if(isset($_POST['OK'])){
 ?>
 
-<form action="produit.php" method="post">
-	Nom Produit : <input type="text" name="Nom"><br>
-	Prix : <input type="floatval" name="Prix"><br>
-	Quantité Stock : <input type="number" name="QteStock"><br>
-	ID Catégorie : <input type="number" name="Cat"><br>
-	<input type="submit" name="Ajouter" value="Ajouter">
+<br/><form action="produit.php" method="post">
+	<table>
+		<tr><td>Nom Produit : </td><td><input type="text" name="Nom"></td></tr>
+	<tr><td>Prix : </td><td><input type="floatval" name="Prix"></td></tr>
+	<tr><td>Quantité Stock : </td><td><input type="number" name="QteStock"></td></tr>
+		<tr><td>Catégorie : </td><td><select name='Cat'>
+			<?php
+			$sql="SELECT * FROM Categories";
+			$resultat=$connexion->query($sql);
+			while($ligne=$resultat->fetch_assoc()){
+				echo "<option value='".$ligne['IdCategorie']."'>".$ligne['NomCategorie']."</option>";
+			}
+			?>
+			</select></td></tr>
+	</table>
+	<br/><input type="submit" name="Ajouter" value="Ajouter">
 </form>
 
 <?php
