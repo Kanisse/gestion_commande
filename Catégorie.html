@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Catégory</title>
+<style>
+body{ margin:0px; }
+#leftMenu {
+  width: 15%;
+  min-width: 150px;
+}
+#leftMenu > details{
+    
+}
+#leftMenu > details > summary{
+  cursor:pointer;
+  background: #DFEFFF;
+  margin:6px;
+  padding:8px;
+}
+#leftMenu > details > summary:hover{
+  background: #EFEFEF;
+}
+#leftMenu > details > summary::-webkit-details-marker{
+  /*display: none;*/
+}
+#leftMenu > details > a{
+  display:block;
+  text-decoration: none;
+  color:#000;
+  font-size:13px;
+  margin:3px 6px 3px 18px;
+  padding: 4px;
+  background: #EFEFEF;
+}
+#leftMenu > details > a:hover{
+  background: #DFEFFF;
+  font-weight: bold;
+}
+#leftMenu > details > a:before{
+  content: "- ";
+}
+</style>
+</head>
+<body>
+<div id="leftMenu">
+  <details>
+    <summary>: Multimedia </summary>
+    <a href="#">Téléphones </a>
+    <a href="#">Accessoires informatique</a>
+    <a href="#">Télévisions </a>
+  </details>
+  <details>
+    <summary>Vétements</summary>
+    <a href="#">Chaussures </a>
+    <a href="#">Montres et Bijoux </a>
+    <a href="#">Vetements pour enfant </a>
+    <a href="#">Sacs et Accessoires </a>
+  </details>
+  <details>
+    <summary>Véhicules</summary>
+    <a href="#">Voitures A</a>
+    <a href="#">Motos </a>
+    <a href="#">Vélos </a>
+  </details>
+  <details>
+    <summary>Sports</summary>
+    <a href="#">Sports Et Loisirs </a>
+  </details>
+  <details>
+    <summary>Pour la maison et jardin</summary>
+    <a href="#">Electroménager et vaisselles </a>
+    <a href="#">Jardin et outils de bricolage </a>
+    <a href="#">Meubles et décoration </a>
+  </details>
+</div>
+</body>
+</html>
